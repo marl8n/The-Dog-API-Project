@@ -4,6 +4,7 @@
     --blue: #1E1EE6;
     --white: #FAF4D9;
     --yellow-off: #AD8E00;
+    --transparent-black: rgba(0 0 0 / 50%);
 
     /* Text size */
     --text-large: 2.4rem;
@@ -25,6 +26,7 @@ html {
 
 .body {
     background-color: var(--dark-purple);
+    position: relative;
 }
 
 .main {
@@ -105,6 +107,7 @@ html {
 
 .dog-info {
     padding: 20px 16px;
+    width: 100%;
 }
 
 .inner-img-container {
@@ -128,6 +131,7 @@ html {
     color: var(--white);
     font-size: var(--text-normal);
     font-weight: normal;
+    text-align: center;
 }
 
 .dog-image {
@@ -141,4 +145,52 @@ html {
     transform: scale(110%);
     opacity: 50%;
     cursor: pointer;
+}
+
+.dog-image:active {
+    transition-timing-function: ease;
+    transition-duration: 200ms;
+    transform: scale(105%);
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.modal-dog-photo {
+    transition-timing-function: ease;
+    transition-duration: 200ms;
+    opacity: 0;
+    z-index: -1;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--transparent-black);
+}
+
+.modal-dog-photo--active {
+    transition-timing-function: ease;
+    transition-duration: 200ms;
+    opacity: 1;
+    z-index: 10;
+    display: grid;
+    place-items: center;
+}
+
+.modal-dog-photo__photo {
+    width: 50vw;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    left: 5%;
+    font-size: 56px;
+    line-height: 24px;
+    vertical-align: top;
+    color: var(--white);
+    background-color: transparent;
+    border: none;
 }

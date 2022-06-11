@@ -31,9 +31,19 @@
     document.body.addEventListener('pointerdown', async (event) => {
         if (event.target.id === 'button-load') {
             await printDog('app')
+        } else if(event.target.classList.contains('dog-image')) {
+            const image = event.target;
+            const modalPhoto = document.querySelector('.modal-dog-photo__photo')
+            modalPhoto.src = image.src;
+            
+            const modal = document.querySelector('.modal-dog-photo')
+            modal.classList.add('modal-dog-photo--active')
+        } else if (event.target.classList.contains('close-modal')) {
+            const modal = document.querySelector('.modal-dog-photo')
+            modal.classList.remove('modal-dog-photo--active')
         }
     })
 
-    document.addEventListener('load', async () => printDog('app'))
+    printDog()
 
 })();
