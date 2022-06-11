@@ -1,6 +1,6 @@
 (async () => {
-    const getDog = async () => {
-        const uri = "https://api.thedogapi.com/v1/images/search";
+    const getDogs = async (numberOfDogs) => {
+        const uri = `https://api.thedogapi.com/v1/images/search?limit=${numberOfDogs}`;
         const dogApiResponse = await fetch(uri);
         return dogApiResponse.json();
     }
@@ -17,12 +17,15 @@
                 </div>
             </div>
             `
-        }).join();
+        }).join('');
     }
 
-    const printDog = async (idContainerElement) => {
+    const printDogs = async ({
+        idContainerElement = 'app',
+        numberOfDogs = 1,
+    }) => {
         const app = document.querySelector(`#${idContainerElement}`);
-        const dog = await getDog();
+        const dog = await getDogs(numberOfDogs);
         const htmlDog = await parseDogToHtmlStr(dog);
         app.innerHTML += htmlDog;
     }
@@ -30,7 +33,7 @@
 
     document.body.addEventListener('pointerdown', async (event) => {
         if (event.target.id === 'button-load') {
-            await printDog('app')
+            await printDogs({})
         } else if(event.target.classList.contains('dog-image')) {
             const image = event.target;
             const modalPhoto = document.querySelector('.modal-dog-photo__photo')
@@ -44,6 +47,8 @@
         }
     })
 
-    printDog()
+    await printDogs({
+        numberOfDogs: 3,
+    })
 
 })();
