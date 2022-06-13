@@ -9,16 +9,23 @@
 </head>
 <body class="body">
     <main class="main">
-        <section class="dogs-section">
-            <h1 class="title">Random Dogs!</h1>
+        <section class="favourite-dogs-section">
+            <h2 class="title">Favorite Dogs!</h2>
+            <div class="dogs-container" id="favorite-dogs-container"></div>
+        </section>
+        <section class="random-dogs-section">
+            <h2 class="title">Random Dogs!</h2>
             <button id="button-load" class="button-load">Load dog</button>
-            <div class="dogs-container" id="app"></div>
+            <div class="dogs-container" id="random-dogs-container"></div>
         </section>
     </main>
     <div class="modal-dog-photo">
         <img class="modal-dog-photo__photo" src="" alt="">
         <button class="close-modal">x</button>
     </div>
+    <script defer src="./dogsUtils.js"></script>
+    <script defer src="./getDogs.js"></script>
+    <script defer src="./parseDog.js"></script>
     <script defer src="./main.js"></script>
 </body>
 </html>
